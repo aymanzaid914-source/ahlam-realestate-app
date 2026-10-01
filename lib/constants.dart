@@ -4,7 +4,7 @@
 class AppConstants {
   // ===== API Base URL =====
   // عدّل هذا الرابط ليشير لموقعك الحقيقي
-  static const String baseUrl = 'https://ahlamalsharq.com';
+  static const String baseUrl = 'https://azure-cassowary-145375.hostingersite.com';
   static const String apiBase = '$baseUrl/mobile/v1';
 
   // API Endpoints

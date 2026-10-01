@@ -43,3 +43,15 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Build outputs
+build/
+*.apk
+*.aab
+
+# Android signing
+android/release-key.jks
+android/key.properties
+
+# Delivery
+docs/
