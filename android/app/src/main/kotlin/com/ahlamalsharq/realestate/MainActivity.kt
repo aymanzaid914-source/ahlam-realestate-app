@@ -1,5 +1,6 @@
-package com.ahlamalsharq.ahlam_real_estate
+package com.ahlamalsharq.realestate
 
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : FlutterActivity()
+

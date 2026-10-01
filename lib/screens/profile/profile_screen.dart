@@ -15,7 +15,6 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   Map<String, dynamic>? _profile;
-  bool _loading = true;
 
   @override
   void initState() {
@@ -25,16 +24,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _loadProfile() async {
     final auth = context.read<AuthProvider>();
-    if (!auth.isAuthenticated) { setState(() => _loading = false); return; }
+    if (!auth.isAuthenticated) return;
     try {
       final api = ApiService(token: auth.token);
       final resp = await api.get(AppConstants.profileEndpoint);
+      if (!mounted) return;
       setState(() {
         _profile = resp.data as Map<String, dynamic>?;
-        _loading = false;
       });
     } catch (_) {
-      setState(() => _loading = false);
+      // silently ignore profile load errors
     }
   }
 
@@ -215,8 +214,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             onPressed: () async {
               Navigator.pop(context);
-              await context.read<AuthProvider>().logout();
-              if (mounted) context.go('/login');
+              final authProvider = context.read<AuthProvider>();
+              await authProvider.logout();
+              if (mounted) {
+                // ignore: use_build_context_synchronously
+                context.go('/login');
+              }
             },
             child: const Text('تسجيل الخروج'),
           ),

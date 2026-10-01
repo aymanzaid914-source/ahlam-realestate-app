@@ -6,9 +6,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/projects_provider.dart';
 import '../../models/project.dart';
-import '../../widgets/common/property_card.dart';
-import '../../services/api_service.dart';
-import '../../constants.dart';
 
 class ProjectDetailScreen extends StatefulWidget {
   final String slug;

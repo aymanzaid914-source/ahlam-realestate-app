@@ -264,7 +264,7 @@ class _FiltersSheetState extends State<_FiltersSheet> {
   double _minPrice = 0;
   double _maxPrice = 500000;
   int? _bedrooms;
-  String _type = '';
+  final String _type = '';
 
   @override
   Widget build(BuildContext context) {
